@@ -19,7 +19,7 @@ const app = express();
 app.use(staticMiddleware);
 app.use(express.json());
 
-app.post('/api/auth/sign-up', (req, res, next) => {
+app.post('/api/auth/register', (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
     throw new ClientError(400, 'email and password are required fields');
@@ -88,6 +88,6 @@ app.listen(process.env.PORT, () => {
   process.stdout.write(`\n\napp listening on port ${process.env.PORT}\n\n`);
 });
 
-// http POST localhost:3000/api/auth/sign-up "email"="eric@gmail.com" "password"="password1!"
+// http POST localhost:3000/api/auth/sign-up "email"="roxy@gmail.com" "password"="password1!"
 // http -v post :3000/api/auth/sign-up email=shrek password=donkey
-// http -v post :3000/api/auth/sign-in email=eric@gmail.com password=password1!
+// http -v post :3000/api/auth/sign-in email=roxy@gmail.com password=password1!

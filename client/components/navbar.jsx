@@ -4,20 +4,25 @@ import React from 'react';
 export default class Navbar extends React.Component {
   render() {
     return (
-      <nav className="navbar">
+      <nav className="navbar row">
         <div className="container">
           <a className="navbar-brand" href="#">
             NavBar
           </a>
-          <a href="#schedule">
-            Schedule
-          </a>
-          <a href="#clients">
-            Clients
-          </a>
-          <a href="#communication">
-            Communication
-          </a>
+          <div>
+            <a href="#schedule">
+              Schedule
+            </a>
+            <a href="#clients">
+              Clients
+            </a>
+            <a href="#communication">
+              Communication
+            </a>
+          </div>
+          <div>
+            { }
+          </div>
         </div>
         <div />
       </nav>
