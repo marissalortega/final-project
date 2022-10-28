@@ -16,3 +16,103 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+h2 {
+  font-family: Syne, sans-serif;
+}
+
+p {
+  font-family: Inter, sans-serif;
+}
+
+input {
+  font-family: Inter, sans-serif;
+}
+
+button {
+  background-color: #f06543;
+  color: white;
+  height: 38px;
+}
+
+.d-flex {
+  gap: 8px;
+}
+
+.white-bg {
+  background-color: white;
+}
+
+.desktop-nav {
+  font-family: Inter, sans-serif;
+  margin-left: 40px;
+}
+
+.desktop-nav a {
+  text-decoration: none;
+  color: white;
+  margin-right: 40px;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: black;
+}
+
+.desktop-nav a:hover {
+  color: white;
+}
+
+.hidden-menu {
+  display: none;
+}
+
+.show-menu {
+  position: absolute;
+  overflow: hidden;
+  border-right: 1px solid black;
+  top: 59px;
+  left: 0;
+  width: 50%;
+  height: 2000px;
+  background-color: rgb(255, 254, 253);
+  transition: 0.5s ease-in-out;
+  transition-delay: 0.1s;
+}
+
+.nav-menu {
+  font-family: Inter, sans-serif;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.nav-menu a:hover {
+  color: #b4b7b9;
+}
+
+.nav-menu li {
+  margin-left: 0;
+  margin-bottom: 8px;
+  padding-top: 24px;
+  padding-left: 16px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid gray;
+}
+
+.hide-on-mobile {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hide-on-desktop {
+    display: none;
+  }
+
+  .hide-on-mobile {
+    display: block;
+  }
+
+  .nav-menu {
+    display: none;
+  }
+}

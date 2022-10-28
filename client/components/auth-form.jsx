@@ -7,8 +7,8 @@ export default class AuthForm extends React.Component {
       email: '',
       password: ''
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
@@ -17,7 +17,6 @@ export default class AuthForm extends React.Component {
   }
 
   handleSubmit(event) {
-    // console.log('clicked!');
     event.preventDefault();
     const { action } = this.props;
     const req = {
@@ -32,7 +31,7 @@ export default class AuthForm extends React.Component {
       .then(result => {
         if (action === 'register') {
           window.location.hash = 'sign-in';
-        } else if (result.email && result.token) {
+        } else if (result.user && result.token) {
           this.props.onSignIn(result);
         }
       });
@@ -45,41 +44,48 @@ export default class AuthForm extends React.Component {
       ? '#sign-in'
       : '#register';
     const alternateActionText = action === 'register'
-      ? 'Sign In'
+      ? 'Sign in'
       : 'Register';
     const submitButtonText = action === 'register'
       ? 'Register'
       : 'Sign In';
     return (
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <input
-            required
-            autoFocus
-            id="email"
-            type="text"
-            name="email"
-            placeholder="Email"
-            onChange={handleChange} />
-        </div>
-        <div className="mb-3">
-          <input
-            required
-            id="password"
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={handleChange} />
-        </div>
-        <div>
-          <a className="button" href={ alternateActionHref }>
-            { alternateActionText }
-          </a>
-          <button type="submit">
-            { submitButtonText }
-          </button>
-        </div>
-      </form>
+      <div className="d-flex justify-content-center">
+        <form className="col-10 col-sm-7 col-md-5 col-lg-4" onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <input
+              required
+              autoFocus
+              id="email"
+              type="text"
+              name="email"
+              placeholder="Email"
+              onChange={handleChange}
+              className="form-control border-dark" />
+          </div>
+          <div className="mb-3">
+            <input
+              required
+              id="password"
+              type="password"
+              name="password"
+              placeholder="Password"
+              onChange={handleChange}
+              className="form-control border-dark" />
+          </div>
+          <div className="mb-2 d-grid gap-2">
+            <button className="border-dark rounded" type="submit">
+              { submitButtonText }
+            </button>
+          </div>
+          <div>
+            <span>Click here to </span>
+            <a href={alternateActionHref}>
+              {alternateActionText}
+            </a>
+          </div>
+        </form>
+      </div>
     );
   }
 }

@@ -1,17 +1,18 @@
 import React from 'react';
+import jwtDecode from 'jwt-decode';
 import AppContext from './lib/app-context';
 import Home from './pages/home';
 import NotFound from './pages/not-found';
 import Navbar from './components/navbar';
-import { parseRoute } from './lib';
+import parseRoute from './lib/parse-route';
 import Auth from './pages/auth';
+import PageContainer from './components/page-container';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       user: null,
-      isAuthorizing: true,
       route: parseRoute(window.location.hash)
     };
     this.handleSignIn = this.handleSignIn.bind(this);
@@ -22,9 +23,9 @@ export default class App extends React.Component {
     window.addEventListener('hashchange', () => {
       this.setState({ route: parseRoute(window.location.hash) });
     });
-    // const token = window.localStorage.getItem('jwt');
-    // const user = token ? jwtDecode(token) : null;
-    // this.setState({ user, isAuthorizing: false });
+    const token = window.localStorage.getItem('jwt');
+    const user = token ? jwtDecode(token) : null;
+    this.setState({ user, isAuthorizing: false });
   }
 
   handleSignIn(result) {
@@ -58,7 +59,9 @@ export default class App extends React.Component {
       <AppContext.Provider value={contextValue}>
         <div className="container-fluid">
           <Navbar />
-          { this.renderPage() }
+          <PageContainer>
+            { this.renderPage() }
+          </PageContainer>
         </div>
       </AppContext.Provider>
     );
