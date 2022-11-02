@@ -26,7 +26,7 @@ export default class Navbar extends React.Component {
     const hideMenu = 'nav-menu hidden-menu';
     return (
       <nav className="navbar row">
-        <div className="container">
+        <div className="container col-lg-11 col-xl-10">
           <div className="d-flex align-items-center">
             <div className="hide-on-desktop">
               { user !== null &&
@@ -36,21 +36,23 @@ export default class Navbar extends React.Component {
               }
             </div>
             <div className="d-inline-block">
-              <a className="navbar-brand" href="#">
-                NavBar
+              <a className="logo" href="#">
+                <h2>NavBar</h2>
               </a>
             </div>
-            <div className="hide-on-mobile desktop-nav">
-              <a href="#schedule">
-                Schedule
-              </a>
-              <a href="#clients">
-                Clients
-              </a>
-              <a href="#communication">
-                Communication
-              </a>
-            </div>
+            { user !== null &&
+              <div className="hide-on-mobile desktop-nav">
+                <a href="#schedule">
+                  Schedule
+                </a>
+                <a href="#clients">
+                  Clients
+                </a>
+                <a href="#communication">
+                  Communication
+                </a>
+              </div>
+            }
           </div>
           { this.state.isClicked === false &&
             <div className={hideMenu}>

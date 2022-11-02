@@ -9,6 +9,7 @@ export default class AuthForm extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
 
   handleChange(event) {
@@ -37,9 +38,13 @@ export default class AuthForm extends React.Component {
       });
   }
 
+  handlePasswordChange(event) {
+    this.setState({ password: event.target.value });
+  }
+
   render() {
     const { action } = this.props;
-    const { handleChange, handleSubmit } = this;
+    const { handleChange, handleSubmit, handleClick } = this;
     const alternateActionHref = action === 'register'
       ? '#sign-in'
       : '#register';
@@ -49,6 +54,24 @@ export default class AuthForm extends React.Component {
     const submitButtonText = action === 'register'
       ? 'Register'
       : 'Sign In';
+
+    const passwordLength = this.state.password.length;
+    let errorMsg = '';
+    let iconClass = '';
+    let pwdErrDivClass = 'pwd-err-div';
+
+    if (passwordLength === 0) {
+      pwdErrDivClass = 'pwd-err-div hidden';
+    } else if (passwordLength > 0 && passwordLength < 8) {
+      pwdErrDivClass = 'pwd-err-div show-div';
+      errorMsg = 'Your password is too short.';
+      iconClass = 'fa-solid fa-xmark fa-l red';
+    } else {
+      pwdErrDivClass = 'pwd-err-div show-div';
+      errorMsg = 'Your password meets requirements.';
+      iconClass = 'fa-solid fa-check fa-l green';
+    }
+
     return (
       <div className="d-flex justify-content-center">
         <form className="col-10 col-sm-7 col-md-5 col-lg-4" onSubmit={handleSubmit}>
@@ -63,7 +86,7 @@ export default class AuthForm extends React.Component {
               onChange={handleChange}
               className="form-control border-dark" />
           </div>
-          <div className="mb-3">
+          <div className="mb-1">
             <input
               required
               id="password"
@@ -71,14 +94,21 @@ export default class AuthForm extends React.Component {
               name="password"
               placeholder="Password"
               onChange={handleChange}
+              onClick={handleClick}
               className="form-control border-dark" />
           </div>
-          <div className="mb-2 d-grid gap-2">
+          { action === 'register' &&
+            <div className={pwdErrDivClass}>
+              <i className={iconClass} />
+              <p className="pwd-err-msg">{errorMsg}</p>
+            </div>
+          }
+          <div className="mt-4 mb-2 d-grid gap-2">
             <button className="border-dark rounded" type="submit">
               { submitButtonText }
             </button>
           </div>
-          <div>
+          <div className="click-here-text text-center">
             <span>Click here to </span>
             <a href={alternateActionHref}>
               {alternateActionText}

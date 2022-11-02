@@ -15,12 +15,12 @@ export default class AuthPage extends React.Component {
 
     return (
       <div>
-        <div className="text-center mt-5">
+        <div className="mt-5">
           <header>
-            <h2>
+            <h2 className="text-center">
               NavBar
             </h2>
-            <p>{ welcomeMessage }</p>
+            <p className="text-center">{ welcomeMessage }</p>
           </header>
           <div>
             <AuthForm

@@ -2,23 +2,29 @@
   background-color: #f06543;
 }
 
-.navbar-brand {
+.logo {
   font-family: Syne, sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 43px;
   color: #fff;
+  text-decoration: none;
+}
+
+.logo:hover {
+  color: white;
+}
+
+h2 {
+  font-family: Syne, sans-serif;
+}
+
+.logo > h2 {
+  margin: 8px 0;
+  cursor: pointer;
 }
 
 .center-block {
   display: block;
   margin-left: auto;
   margin-right: auto;
-}
-
-h2 {
-  font-family: Syne, sans-serif;
 }
 
 p {
@@ -35,6 +41,37 @@ button {
   height: 38px;
 }
 
+.click-here-text > span {
+  font-family: Inter, sans-serif;
+  color: black;
+}
+
+.desktop-nav a {
+  text-decoration: none;
+  color: white;
+  margin-right: 40px;
+}
+
+.click-here-text > a {
+  font-family: Inter, sans-serif;
+  color: black;
+  text-decoration: none;
+  border-bottom: 2px solid #f06543;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: black;
+}
+
+.desktop-nav a:hover {
+  color: white;
+}
+
+.click-here-text > a:hover {
+  color: #b4b7b9;
+}
+
 .d-flex {
   gap: 8px;
 }
@@ -46,21 +83,6 @@ button {
 .desktop-nav {
   font-family: Inter, sans-serif;
   margin-left: 40px;
-}
-
-.desktop-nav a {
-  text-decoration: none;
-  color: white;
-  margin-right: 40px;
-}
-
-.nav-menu a {
-  text-decoration: none;
-  color: black;
-}
-
-.desktop-nav a:hover {
-  color: white;
 }
 
 .hidden-menu {
@@ -101,6 +123,32 @@ button {
 
 .hide-on-mobile {
   display: none;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.pwd-err-div .pwd-err-msg {
+  font-size: 14px;
+  display: inline;
+}
+
+.pwd-err-div i {
+  display: inline;
+  margin-right: 8px;
 }
 
 @media (min-width: 768px) {
