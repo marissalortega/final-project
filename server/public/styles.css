@@ -1,0 +1,166 @@
+.navbar {
+  background-color: #f06543;
+}
+
+.logo {
+  font-family: Syne, sans-serif;
+  color: #fff;
+  text-decoration: none;
+}
+
+.logo:hover {
+  color: white;
+}
+
+h2 {
+  font-family: Syne, sans-serif;
+}
+
+.logo > h2 {
+  margin: 8px 0;
+  cursor: pointer;
+}
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p {
+  font-family: Inter, sans-serif;
+}
+
+input {
+  font-family: Inter, sans-serif;
+}
+
+button {
+  background-color: #f06543;
+  color: white;
+  height: 38px;
+}
+
+.click-here-text > span {
+  font-family: Inter, sans-serif;
+  color: black;
+}
+
+.desktop-nav a {
+  text-decoration: none;
+  color: white;
+  margin-right: 40px;
+}
+
+.click-here-text > a {
+  font-family: Inter, sans-serif;
+  color: black;
+  text-decoration: none;
+  border-bottom: 2px solid #f06543;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: black;
+}
+
+.desktop-nav a:hover {
+  color: white;
+}
+
+.click-here-text > a:hover {
+  color: #b4b7b9;
+}
+
+.d-flex {
+  gap: 8px;
+}
+
+.white-bg {
+  background-color: white;
+}
+
+.desktop-nav {
+  font-family: Inter, sans-serif;
+  margin-left: 40px;
+}
+
+.hidden-menu {
+  display: none;
+}
+
+.show-menu {
+  position: absolute;
+  overflow: hidden;
+  border-right: 1px solid black;
+  top: 59px;
+  left: 0;
+  width: 50%;
+  height: 2000px;
+  background-color: rgb(255, 254, 253);
+  transition: 0.5s ease-in-out;
+  transition-delay: 0.1s;
+}
+
+.nav-menu {
+  font-family: Inter, sans-serif;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.nav-menu a:hover {
+  color: #b4b7b9;
+}
+
+.nav-menu li {
+  margin-left: 0;
+  margin-bottom: 8px;
+  padding-top: 24px;
+  padding-left: 16px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid gray;
+}
+
+.hide-on-mobile {
+  display: none;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.pwd-err-div .pwd-err-msg {
+  font-size: 14px;
+  display: inline;
+}
+
+.pwd-err-div i {
+  display: inline;
+  margin-right: 8px;
+}
+
+@media (min-width: 768px) {
+  .hide-on-desktop {
+    display: none;
+  }
+
+  .hide-on-mobile {
+    display: block;
+  }
+
+  .nav-menu {
+    display: none;
+  }
+}
