@@ -6,6 +6,7 @@ const pg = require('pg');
 const argon2 = require('argon2');
 const jwt = require('jsonwebtoken');
 const ClientError = require('./client-error');
+const authorizationMiddleware = require('./authorization-middleware');
 
 const db = new pg.Pool({
   connectionString: process.env.DATABASE_URL,
@@ -80,8 +81,26 @@ app.post('/api/auth/sign-in', (req, res, next) => {
     .catch(err => next(err));
 });
 
-app.get('/api/hello', (req, res) => {
-  res.json({ hello: 'world' });
+app.use(authorizationMiddleware);
+
+app.post('/api/add-client', (req, res, next) => {
+  const { userId } = req.user;
+  const { firstName, lastName, email, phoneNumber, streetAddress, city, state, zipCode, birthday } = req.body;
+  if (!firstName || !lastName || !email || !phoneNumber || !streetAddress || !city || !state || !zipCode || !birthday) {
+    throw new ClientError(400, 'First Name, Last Name, Email, Phone Number, Street Address, City, State, Zip Code, and Birthday are required fields.');
+  }
+  const sql = `
+    insert into "clients" ("userId", "firstName", "lastName", "email", "phoneNumber", "streetAddress", "city", "state", "zipCode", "birthday")
+        values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+        returning *
+  `;
+  const params = [userId, firstName, lastName, email, phoneNumber, streetAddress, city, state, zipCode, birthday];
+  db.query(sql, params)
+    .then(result => {
+      const [client] = result.rows;
+      res.status(201).json(client);
+    })
+    .catch(err => next(err));
 });
 
 app.use(errorMiddleware);
@@ -89,3 +108,7 @@ app.use(errorMiddleware);
 app.listen(process.env.PORT, () => {
   process.stdout.write(`\n\napp listening on port ${process.env.PORT}\n\n`);
 });
+
+// http POST localhost:3000/api/auth/sign-in "email"="eric@gmail.com" "password"="password1!"
+
+// http POST localhost:3000/api/add-client X-Access-Token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoiZXJpY0BnbWFpbC5jb20iLCJpYXQiOjE2NjczNjQxNDZ9.K3eIFcZx6HnRJdCWyY_aTGuU3MoesXchCaqYvtz5Ya4 "firstName"="Sara" "lastName"="James" "email"="sara@gmail.com" "phoneNumber"="5555550000" "streetAddress"="123 Candy Cane Lane" "city"="Los Angeles" "state"="CA" "zipCode"="90210" "birthday"="1994/03/11"
