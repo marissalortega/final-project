@@ -23,6 +23,8 @@ app.post('/api/auth/register', (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
     throw new ClientError(400, 'email and password are required fields');
+  } else if (password.length < 8) {
+    throw new ClientError(400, 'password must be at least 8 characters.');
   }
   argon2
     .hash(password)
@@ -87,7 +89,3 @@ app.use(errorMiddleware);
 app.listen(process.env.PORT, () => {
   process.stdout.write(`\n\napp listening on port ${process.env.PORT}\n\n`);
 });
-
-// http POST localhost:3000/api/auth/sign-up "email"="roxy@gmail.com" "password"="password1!"
-// http -v post :3000/api/auth/sign-up email=shrek password=donkey
-// http -v post :3000/api/auth/sign-in email=roxy@gmail.com password=password1!
