@@ -21,6 +21,17 @@ h2 {
   cursor: pointer;
 }
 
+.return-home {
+  color: black;
+  text-decoration: none;
+  border-bottom: 2px solid #f06543;
+  cursor: pointer;
+}
+
+.return-home:hover {
+  color: #b4b7b9;
+}
+
 .center-block {
   display: block;
   margin-left: auto;
