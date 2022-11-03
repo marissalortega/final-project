@@ -103,6 +103,21 @@ app.post('/api/add-client', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.get('/api/add-client', (req, res, next) => {
+  const { userId } = req.user;
+  const sql = `
+    select *
+      from "clients"
+      where "userId" = $1
+  `;
+  const params = [userId];
+  db.query(sql, params)
+    .then(result => {
+      res.json(result.rows);
+    })
+    .catch(err => next(err));
+});
+
 app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {
