@@ -12,6 +12,10 @@
   color: white;
 }
 
+h1 {
+  font-family: Syne, sans-serif;
+}
+
 h2 {
   font-family: Syne, sans-serif;
 }
@@ -38,6 +42,10 @@ h2 {
   margin-right: auto;
 }
 
+.page-container {
+  font-family: Inter, sans-serif;
+}
+
 p {
   font-family: Inter, sans-serif;
 }
@@ -47,6 +55,12 @@ input {
 }
 
 button {
+  background-color: #f06543;
+  color: white;
+  height: 38px;
+}
+
+input[type="submit"] {
   background-color: #f06543;
   color: white;
   height: 38px;
@@ -160,6 +174,11 @@ button {
 .pwd-err-div i {
   display: inline;
   margin-right: 8px;
+}
+
+.upload-image {
+  background-color: rgb(237 180 164);
+  height: 280px;
 }
 
 @media (min-width: 768px) {

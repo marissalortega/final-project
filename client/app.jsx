@@ -7,6 +7,7 @@ import Navbar from './components/navbar';
 import parseRoute from './lib/parse-route';
 import Auth from './pages/auth';
 import PageContainer from './components/page-container';
+import ClientsPage from './pages/clients';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -46,6 +47,9 @@ export default class App extends React.Component {
     }
     if (path === 'sign-in' || path === 'register') {
       return <Auth />;
+    }
+    if (path === 'clients') {
+      return <ClientsPage />;
     }
     return <NotFound />;
   }
