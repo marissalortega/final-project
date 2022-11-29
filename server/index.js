@@ -128,4 +128,4 @@ app.listen(process.env.PORT, () => {
 
 // http -v POST localhost:3000/api/add-client X-Access-Token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoiZXJpY0BnbWFpbC5jb20iLCJpYXQiOjE2NjczNjQxNDZ9.K3eIFcZx6HnRJdCWyY_aTGuU3MoesXchCaqYvtz5Ya4 "firstName"="Sara" "lastName"="James" "email"="sara@gmail.com" "phoneNumber"="5555550000" "streetAddress"="123 Candy Cane Lane" "city"="Los Angeles" "state"="CA" "zipCode"="90210" "birthday"="1994/03/11"
 
-// http -v GET localhost:3000/api/add-client X-Access-Token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoiZXJpY0BnbWFpbC5jb20iLCJpYXQiOjE2NjczNjQxNDZ9.K3eIFcZx6HnRJdCWyY_aTGuU3MoesXchCaqYvtz5Ya4
+// http -v GET localhost:3000/api/add-client X-Access-Token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoiZXJpY0BnbWFpbC5jb20iLCJpYXQiOjE2Njc4ODEzNDV9.uh2lyGORT9Iczeni6gRtDfVqIiLYs-z3-_ToV-Chcv8

@@ -181,6 +181,24 @@ input[type="submit"] {
   height: 280px;
 }
 
+.client-list {
+  list-style: none;
+  font-size: 16px;
+  padding-left: 0;
+}
+
+.client-list-li {
+  border-bottom: 1px solid rgba(180, 183, 185, 0.5);
+  margin-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 4px;
+}
+
+.client-list-firstname {
+  margin-right: 4px;
+  font-weight: 700;
+}
+
 @media (min-width: 768px) {
   .hide-on-desktop {
     display: none;

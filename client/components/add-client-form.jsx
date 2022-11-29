@@ -12,10 +12,17 @@ export default class AddClientForm extends React.Component {
       city: '',
       state: '',
       zipCode: '',
-      birthday: ''
+      birthday: '',
+      goBackClicked: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleGoBack = this.handleGoBack.bind(this);
+  }
+
+  handleGoBack() {
+    this.setState({ goBackClicked: !this.state.goBackClicked });
+    this.props.setStateOfIsAddClient(false);
   }
 
   handleChange(event) {
@@ -35,17 +42,27 @@ export default class AddClientForm extends React.Component {
     };
     fetch('/api/add-client', req)
       .then(res => {
-        res.json();
+        return res.json();
       })
       .then(result => {
+
       })
       .catch(err => console.error('Fetch failed!', err));
   }
 
   render() {
-    const { handleChange, handleSubmit } = this;
+    const { handleChange, handleSubmit, handleGoBack } = this;
+    let hiddenClass = '';
+
+    if (this.state.goBackClicked === true) {
+      hiddenClass = 'hidden';
+    }
+
     return (
-      <div>
+      <div className={hiddenClass}>
+        <div className="mr-auto" onClick={handleGoBack}>
+          <i className="fa-solid fa-chevron-left fa-l" />
+        </div>
         <div className="d-flex justify-content-center mb-3">
           <div className="upload-image col-10 rounded-top d-flex justify-content-center align-items-center flex-column">
             <p className="mb-0">Add Photo</p>
@@ -62,7 +79,6 @@ export default class AddClientForm extends React.Component {
               </label>
               <input
                 required
-                autoFocus
                 id="first-name"
                 type="text"
                 name="firstName"
@@ -75,7 +91,6 @@ export default class AddClientForm extends React.Component {
               </label>
               <input
                 required
-                autoFocus
                 id="last-name"
                 type="text"
                 name="lastName"
@@ -88,7 +103,6 @@ export default class AddClientForm extends React.Component {
               </label>
               <input
                 required
-                autoFocus
                 id="email"
                 type="email"
                 name="email"
@@ -102,7 +116,6 @@ export default class AddClientForm extends React.Component {
               </label>
               <input
                 required
-                autoFocus
                 id="phone-number"
                 type="tel"
                 name="phoneNumber"
@@ -118,7 +131,6 @@ export default class AddClientForm extends React.Component {
               </label>
               <input
                 required
-                autoFocus
                 id="street-address"
                 type="text"
                 name="streetAddress"
@@ -131,7 +143,6 @@ export default class AddClientForm extends React.Component {
               </label>
               <input
                 required
-                autoFocus
                 id="city"
                 type="text"
                 name="city"
@@ -203,7 +214,6 @@ export default class AddClientForm extends React.Component {
               </label>
               <input
                 required
-                autoFocus
                 id="zip-code"
                 type="text"
                 name="zipCode"
@@ -217,7 +227,6 @@ export default class AddClientForm extends React.Component {
               </label>
               <input
                 required
-                autoFocus
                 id="birthday"
                 type="date"
                 name="birthday"
