@@ -187,6 +187,22 @@ input[type="submit"] {
   padding-left: 0;
 }
 
+.client-card-mr {
+  margin-right: 4px;
+}
+
+.client-card-name {
+  font-size: 24px;
+}
+
+.font-weight-700 {
+  font-weight: 700;
+}
+
+.marb-4px {
+  margin-bottom: 4px;
+}
+
 .client-list-li {
   border-bottom: 1px solid rgba(180, 183, 185, 0.5);
   margin-top: 8px;

@@ -42,6 +42,7 @@ export default class ClientList extends React.Component {
       birthday: '',
       clientClicked: false
     };
+    this.handleGoBack = this.handleGoBack.bind(this);
   }
 
   setStateOfParent = (firstName, lastName, email, phoneNumber, streetAddress, city, state, zipCode, birthday, clientClicked) => {
@@ -55,9 +56,18 @@ export default class ClientList extends React.Component {
       state,
       zipCode,
       birthday,
-      clientClicked
+      clientClicked,
+      goBackClicked: false,
+      isAddClient: false
     });
   };
+
+  handleGoBack() {
+    this.setState({
+      goBackClicked: !this.state.goBackClicked,
+      clientClicked: !this.state.clientClicked
+    });
+  }
 
   render() {
     this.props.clients.sort((a, b) => (a.firstName > b.firstName) ? 1 : -1);
@@ -75,16 +85,34 @@ export default class ClientList extends React.Component {
         }
         {this.state.clientClicked === true &&
           <div>
-            <i className="fa-solid fa-chevron-left fa-l" />
-            <p>{this.state.firstName}</p>
-            <p>{this.state.lastName}</p>
-            <p>{this.state.email}</p>
-            <p>{this.state.phoneNumber}</p>
-            <p>{this.state.streetAddress}</p>
-            <p>{this.state.city}</p>
-            <p>{this.state.state}</p>
-            <p>{this.state.zipCode}</p>
-            <p>{this.state.birthday}</p>
+            <div className="mr-auto" onClick={this.handleGoBack}>
+              <i className="fa-solid fa-chevron-left fa-l" />
+            </div>
+            <div className="d-flex justify-content-center mb-3">
+              <div className="upload-image col-10 rounded-top d-flex justify-content-center align-items-center flex-column">
+                <p className="mb-0">Add Photo</p>
+                <div>
+                  <i className="fa-solid fa-plus fa-xl" />
+                </div>
+              </div>
+            </div>
+            <div className="col-10 mx-auto">
+              <div className="font-weight-700 client-card-name mb-1">
+                <span className="client-card-mr">{this.state.firstName}</span>
+                <span>{this.state.lastName}</span>
+              </div>
+              <div className="marb-4px">{this.state.email}</div>
+              <div className="marb-4px">{this.state.phoneNumber}</div>
+              <div>
+                <div className="marb-4px">{this.state.streetAddress}</div>
+                <div className="marb-4px">
+                  <span className="client-card-mr">{this.state.city},</span>
+                  <span className="client-card-mr">{this.state.state}</span>
+                  <span className="client-card-mr">{this.state.zipCode}</span>
+                </div>
+                <div className="marb-4px">{this.state.birthday}</div>
+              </div>
+            </div>
           </div>
         }
       </div>

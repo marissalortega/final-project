@@ -8,9 +8,8 @@ export default class ClientsPage extends React.Component {
     super(props);
     this.state = {
       isAddClient: false,
-      isClientCard: false,
       clients: [],
-      isChosenClient: false
+      clientClicked: false
     };
     this.handleAddClient = this.handleAddClient.bind(this);
   }
@@ -46,7 +45,7 @@ export default class ClientsPage extends React.Component {
       <div className="mt-3">
         <h1>Clients</h1>
         <div>
-          { this.state.isAddClient === false &&
+          { this.state.isAddClient === false && this.state.clientClicked === false &&
             <div className="d-flex justify-content-end mb-3">
               <i className="fa-solid fa-user-plus" onClick={this.handleAddClient} />
             </div>
